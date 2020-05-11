@@ -1,0 +1,53 @@
+<html ng-app="app">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', []);
+
+        const servicefn = function () {
+            this.service = "este es un servico";
+            this.x = Math.random();
+        }
+
+        app.service('ServiceTest', [servicefn]);
+        app.service('ServiceTest2', [servicefn]);
+
+        app.factory('FactoryTest', [function FactoryTest() {
+            return {
+                factory: 'esta es una factory',
+                x: Math.random(),
+            }
+        }]);
+
+        app.provider('testPv', function testPvProvider() {
+            var appName = 'Default';
+
+            this.inicializador = function (appNAme) {
+                appName = appNAme;
+            };
+
+            this.$get = [function testPvFactory() {
+                return {
+                    mensageLog: msg => console.log(`${appName} dice: ${msg}`),
+                };
+            }];
+        });
+
+        app.config(["testPvProvider", function (testPvProvider) {
+            testPvProvider.inicializador('La chida');
+        }]);
+
+        app.controller('PhoneListController', function PhoneListController($scope, ServiceTest, FactoryTest, testPv) {
+            console.log("in controller", ServiceTest, FactoryTest, testPv)
+            testPv.mensageLog("un mensaje")
+        });
+    </script>
+</head>
+
+<body ng-controller="PhoneListController">
+
+
+</body>
+
+</html>

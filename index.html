@@ -1,0 +1,31 @@
+<html ng-app="app">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', []);
+
+        app.controller('TestController', function TestController($scope) {
+            $scope.nombre = "carlos"
+            $scope.sendAlert = () => alert("holaa")
+        });
+
+        app.controller('TestController2', function TestController2($scope) {
+            
+        });
+    </script>
+</head>
+
+<body>
+    <div>{{2+2}}</div>
+    <div ng-controller="TestController">
+        <button ng-click="sendAlert()">Holaa</button>
+        <div ng-controller="TestController2">
+            <p>{{nombre}}</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

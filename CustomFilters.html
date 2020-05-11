@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+        myApp.filter('customFilter',
+            function () {
+                return function (x) {
+                    return x.split("").map((l, i) => i % 2 === 0 ? l.toUpperCase() : l.toLowerCase()).join('')
+                };
+            });
+
+
+        myApp.controller('personCtrl', function ($scope) {
+            $scope.gente = [
+                'Jani',
+                'Carl',
+                'Margareth',
+                'Hege',
+                'Joe',
+                'Gustav',
+                'Birgit',
+                'Mary',
+                'Kai',
+            ];
+        });
+        //
+    </script>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="personCtrl">
+        <ul>
+            <li ng-repeat="x in gente">
+                <p>{{x | customFilter}}</p>
+                <hr />
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>

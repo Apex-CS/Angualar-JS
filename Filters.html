@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script>
+        var myApp = angular.module('myApp', []);
+
+        myApp.controller('personCtrl', function ($scope) {
+            $scope.nombre = 'CARLOS'
+            $scope.apellido = 'gonzalez'
+
+            $scope.gente = [
+                { nombre: 'Jani', pais: 'Norway', salario: Math.floor(Math.random() * 1001) - 100 },
+                { nombre: 'Carl', pais: 'Sweden', salario: Math.floor(Math.random() * 1001) - 100 },
+                { nombre: 'Margareth', pais: 'England', salario: Math.floor(Math.random() * 1001) - 100 },
+                { nombre: 'Hege', pais: 'Norway', salario: Math.floor(Math.random() * 1001) - 100 },
+                { nombre: 'Joe', pais: 'Denmark', salario: Math.floor(Math.random() * 1001) - 100 },
+                { nombre: 'Gustav', pais: 'Sweden', salario: Math.floor(Math.random() * 1001) - 100 },
+                { nombre: 'Birgit', pais: 'Denmark', salario: Math.floor(Math.random() * 1001) - 100 },
+                { nombre: 'Mary', pais: 'England', salario: Math.floor(Math.random() * 1001) - 100 },
+                { nombre: 'Kai', pais: 'Norway', salario: Math.floor(Math.random() * 1001) - 100 }
+            ];
+        });
+        //
+    </script>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="personCtrl">
+        <input type="text" ng-model="nombre"></p>
+        <p>Mi nombre en minusculas {{::nombre}}</p>
+        <p>Mi nombre en minusculas {{ nombre | lowercase }}</p>
+        <p>mi apellido en mayusculas {{ apellido | uppercase}}</p>
+
+        <p>Ng Repeat:</p>
+        <p><input type="text" ng-model="filtro"></p>
+        <ul>
+            <li ng-repeat="x in gente | orderBy:'pais' | filter:{nombre:filtro}">
+                <p>{{x.nombre}}</p>
+                <p>{{x.pais}}</p>
+                <p>{{x.salario | currency}}</p>
+                <hr />
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>
