@@ -1,0 +1,38 @@
+<html ng-app="app">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="./app.js"></script>
+</head>
+
+<body>
+    </div>
+    <div ng-controller="testCtrl" style=" display:flex; flex-dirction:row;">
+        <div>
+            <!-- <h3>{{papa}} id:{{$id}}</h3> -->
+            <h3>{{papa}}</h3>
+            Nombre: <input type="text" ng-model="nombre"></p>
+            Apellido: <input type="text" ng-model="apellido"></p>
+            <p>Nombre: {{nombre}}</p>
+            <p>Apellido: {{apellido}}</p>
+            <button ng-click="sendAlert()">sendAlert</button>
+        </div>
+        <hr />
+
+        <div ng-include src="'template.html'"></div>
+
+        <hr />
+        <div d-no-scope></div>
+
+        <hr />
+        <div d-scope></div>
+
+        <hr />
+        <d-mapping-scope papa="Papa" nombre="nombre" send-alert="sendAlert()"></d-mapping-scope>
+
+    </div>
+
+
+</body>
+
+</html>

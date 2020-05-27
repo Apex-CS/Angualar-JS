@@ -1,0 +1,18 @@
+<div class="emp-details-wrapper">
+    <div class="emp-details-header">
+        <div class="emp-details-header-avatar">
+            <img src="{{selectedEmp.avatar}}" />
+        </div>
+        <div class="emp-details-header-name">
+            <p>{{selectedEmp.first_name}}</p>
+        </div>
+    </div>
+
+    <div class="emp-details-body">
+        <div class="emp-details-body-row" ng-repeat="(key, value) in selectedEmp" ng-if="!['first_name','avatar'].includes(key)">
+            <div class="emp-details-body-row-key"> {{key}}:</div>
+            <div class="emp-details-body-row-value"> {{selectedEmp[key]}}</div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,126 @@
+<html ng-app="app">
+<style>
+    th {
+        text-align: left;
+        background-color: aquamarine;
+    }
+
+    td {
+        border: 1px solid black;
+    }
+
+    table {
+        width: 400px;
+    }
+
+
+    .emps {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .emps-list {
+        width: 400px;
+    }
+
+
+    .emps-details {
+        flex-grow: 1;
+        align-content: center;
+    }
+
+
+
+    .emp-details-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 200px;
+        margin-left: 150px;
+        border: 1px solid;
+    }
+
+    .emp-details-header {
+        display: flex;
+        flex-direction: row;
+        background-color: blue;
+        color: white;
+    }
+
+    .emp-details-header-avatar {
+        background-color: white;
+        border-radius: 50px;
+        width: 60px;
+    }
+
+    .emp-details-header-avatar>img {
+        margin-bottom: 10px;
+        margin-left: 6px;
+    }
+
+    .emp-details-header-name {
+        flex-grow: 1;
+        font-weight: bold;
+        font-size: 20px;
+        align-content: center;
+        text-align: center;
+    }
+
+
+    .emp-details-body {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .emp-details-body-row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .emp-details-body-row-key {
+        width: 100px;
+        font-weight: bold;
+    }
+
+    .emp-details-body-row-value {
+        flex-grow: 1;
+        align-content: center;
+        text-align: center;
+    }
+</style>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="./app.js"></script>
+</head>
+
+<body>
+    <div ng-controller="EmpController">
+        <div class="emps">
+            <div class="emps-list">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Salary</th>
+                    </tr>
+                    <tr ng-click="selectEmp(emp.id);" ng-repeat="emp in employees | orderBy:'first_name'">
+                        <td>{{emp.first_name}} {{emp.last_name}}</td>
+                        <td>{{emp.department}}</td>
+                        <td>{{emp.salary}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="emps-details">
+                <div emp-details ng-if="selectedEmp"></div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
